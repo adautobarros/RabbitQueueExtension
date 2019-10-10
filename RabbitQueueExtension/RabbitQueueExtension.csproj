@@ -7,6 +7,8 @@
     <Authors>Adauto</Authors>
     <Company>Adauto Corp</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <RepositoryUrl>https://github.com/adautobarros/RabbitQueueExtension</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
