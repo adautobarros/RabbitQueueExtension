@@ -19,10 +19,18 @@ namespace RabbitConnectionFactoryExtensions
             Configurar(configuration, configSectionRabbitMQ);
         }
 
+        public QueuePublish(RabbitHostConfiguration rabbitMQConfiguration)
+        {
+            Configurar(rabbitMQConfiguration);
+        }
+
         public void Configurar(IConfiguration configuration, string configSectionRabbitMQ)
         {
-            var rabbitMQConfiguration = configuration.GetSection(configSectionRabbitMQ).Get<RabbitHostConfiguration>();
+            Configurar(configuration.GetSection(configSectionRabbitMQ).Get<RabbitHostConfiguration>());
+        }
 
+        private void Configurar(RabbitHostConfiguration rabbitMQConfiguration)
+        {
             ValidarConfiguracao(rabbitMQConfiguration);
 
             ConnectionFactory = new ConnectionFactory()
