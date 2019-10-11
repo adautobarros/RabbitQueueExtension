@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using QueuePublisher;
 
-namespace RabbitConnectionFactoryExtensions
+namespace RabbitQueueExtensions
 {
     public static class QueuePublishExtensions
     {

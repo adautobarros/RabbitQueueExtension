@@ -5,7 +5,7 @@ using QueuePublisher;
 using RabbitMQ.Client;
 using System.Threading.Tasks;
 
-namespace RabbitConnectionFactoryExtensions
+namespace RabbitQueueExtensions
 {
     public static class RabbitQueueExtension
     {

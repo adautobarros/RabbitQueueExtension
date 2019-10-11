@@ -3,7 +3,7 @@ using QueuePublisher;
 using RabbitMQ.Client;
 using System;
 
-namespace RabbitConnectionFactoryExtensions
+namespace RabbitQueueExtensions
 {
     public class QueuePublish : IQueuePublish
     {
