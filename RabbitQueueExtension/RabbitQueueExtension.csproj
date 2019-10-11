@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>RabbitQueueExtension</PackageId>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
     <Authors>Adauto</Authors>
     <Company>Adauto Corp</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -12,7 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="IQueuePublish" Version="1.0.3" />
+    <PackageReference Include="IQueuePublish" Version="1.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />    
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.2.0" />
     <PackageReference Include="RabbitMQ.Client" Version="5.1.1" />
