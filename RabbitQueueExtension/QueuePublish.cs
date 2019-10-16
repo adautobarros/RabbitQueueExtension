@@ -52,7 +52,7 @@ namespace RabbitQueueExtensions
                             || string.IsNullOrEmpty(rabbitMQConfiguration.Password)
                             || rabbitMQConfiguration.Port == 0)
                 throw new ArgumentException("A configuração da section RabbitMQConfiguration do arquivo appsetings.json está incorreta");
-        }     
+        }
 
         public void Publish<T>(T entidade, string configPublishSectionRabbitMQ)
         {

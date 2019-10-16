@@ -20,9 +20,6 @@ namespace RabbitQueueExtensions
 
                 channel.ExchangeDeclare(exchange: exchangeName, type: exchangeType);
 
-                //Cria a fila caso não exista
-                channel.QueueDeclare(queue: queueName, durable: true, exclusive: false, autoDelete: false, arguments: null);
-
                 //Seta a mensagem como persistente
                 var properties = channel.CreateBasicProperties();
                 properties.Persistent = true;
@@ -57,7 +54,7 @@ namespace RabbitQueueExtensions
                             //Envia ao Handler a mensagem
                             await handler.HandleAsync(entidade);
                             //Diz ao RabbitMQ que a mensagem foi lida com sucesso pelo consumidor
-                            channel.BasicAck(deliveryTag: ea.DeliveryTag, multiple: true);
+                            channel.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
                         };
                         //Registra os consumidor no RabbitMQ
                         channel.BasicConsume(queueName, false, consumer: consumer);
