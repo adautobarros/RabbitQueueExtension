@@ -49,12 +49,14 @@ namespace RabbitQueueExtensions
                         };
                         consumer.Received += async (sender, ea) =>
                         {
+
                             var mensagem = Encoding.UTF8.GetString(ea.Body);
                             var entidade = JsonConvert.DeserializeObject<T>(mensagem);
                             //Envia ao Handler a mensagem
                             await handler.HandleAsync(entidade);
                             //Diz ao RabbitMQ que a mensagem foi lida com sucesso pelo consumidor
                             channel.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
+
                         };
                         //Registra os consumidor no RabbitMQ
                         channel.BasicConsume(queueName, false, consumer: consumer);

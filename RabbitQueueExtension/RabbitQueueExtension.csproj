@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>RabbitQueueExtension</PackageId>
-    <Version>1.0.6</Version>
+    <Version>1.0.7</Version>
     <Authors>Adauto</Authors>
     <Company>Adauto Corp</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>

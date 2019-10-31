@@ -50,7 +50,7 @@ namespace RabbitQueueExtensions
             if (string.IsNullOrEmpty(rabbitMQConfiguration.HostName)
                             || string.IsNullOrEmpty(rabbitMQConfiguration.UserName)
                             || string.IsNullOrEmpty(rabbitMQConfiguration.Password)
-                            || rabbitMQConfiguration.Port == 0)
+                            || rabbitMQConfiguration.Port < 1)
                 throw new ArgumentException("A configuração da section RabbitMQConfiguration do arquivo appsetings.json está incorreta");
         }
 
