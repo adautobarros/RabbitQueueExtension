@@ -57,17 +57,17 @@ namespace RabbitQueueExtensions
         public void Publish<T>(T entidade, string configPublishSectionRabbitMQ)
         {
             var info = _configuration.GetSection(configPublishSectionRabbitMQ).Get<RabbitInfoQueuePublushConfiguration>();
-            ConnectionFactory.Publish(entidade, info.ExchangeName, info.ExchangeType, info.RoutingKey, info.QueueName);
+            ConnectionFactory.Publish(entidade, info.ExchangeName, info.RoutingKey);
         }
 
         public void Publish<T>(T entidade, RabbitInfoQueuePublushConfiguration info)
         {
-            ConnectionFactory.Publish(entidade, info.ExchangeName, info.ExchangeType, info.RoutingKey, info.QueueName);
+            ConnectionFactory.Publish(entidade, info.ExchangeName, info.RoutingKey);
         }
 
-        public void Publish<T>(T entidade, string exchangeName = "", string exchangeType = QueuePublisher.ExchangeType.Direct, string routingKey = "", string queueName = "")
+        public void Publish<T>(T entidade, string exchangeName, string routingKey)
         {
-            ConnectionFactory.Publish(entidade, exchangeName, exchangeType, routingKey, queueName);
+            ConnectionFactory.Publish(entidade, exchangeName, routingKey);
         }
     }
 }

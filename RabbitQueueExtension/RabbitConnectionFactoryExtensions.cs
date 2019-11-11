@@ -10,15 +10,13 @@ namespace RabbitQueueExtensions
 {
     internal static class RabbitConnectionFactoryExtensions
     {
-        internal static void Publish<T>(this ConnectionFactory connectionFactory, T entidade = default, string exchangeName = "", string exchangeType = "direct", string routingKey = "", string queueName = "")
+        internal static void Publish<T>(this ConnectionFactory connectionFactory, T entidade = default, string exchangeName = "", string routingKey = "")
         {
             using (var connection = connectionFactory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
                 var message = JsonConvert.SerializeObject(entidade);
                 var body = Encoding.UTF8.GetBytes(message);
-
-                channel.ExchangeDeclare(exchange: exchangeName, type: exchangeType);
 
                 //Seta a mensagem como persistente
                 var properties = channel.CreateBasicProperties();
