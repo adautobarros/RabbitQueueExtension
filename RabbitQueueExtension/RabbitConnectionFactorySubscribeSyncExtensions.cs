@@ -14,7 +14,7 @@ namespace RabbitQueueExtensions
         {
             var connection = connectionFactory.CreateConnection();
             var channel = connection.CreateModel();
-            channel.ExchangeDeclare(exchange: exchangeName, type: exchangeType);
+            channel.ExchangeDeclare(exchange: exchangeName, type: exchangeType, durable: true);
 
             Dictionary<string, object> args = null;
             if (createDeadLetterQueue)
@@ -49,7 +49,7 @@ namespace RabbitQueueExtensions
                         {
 
                             Console.WriteLine(ex);
-                            channel.BasicNack(ea.DeliveryTag, false, false);                            
+                            channel.BasicNack(ea.DeliveryTag, false, false);
                         }
 
                     };

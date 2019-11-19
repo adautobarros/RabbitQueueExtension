@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace RabbitQueueExtensions
 {
-    internal static class RabbitConnectionFactorySubscribeAssyncExtensions
+    internal static class RabbitConnectionFactorySubscribeAsyncExtensions
     {
         internal static async Task SubscribeAsync<T>(this ConnectionFactory connectionFactory, ICommandHandler<T> handler, string exchangeName, string exchangeType, string routingKey, string queueName, int numberOfWorkroles, bool createDeadLetterQueue)
         {
             var connection = connectionFactory.CreateConnection();
             var channel = connection.CreateModel();
-            channel.ExchangeDeclare(exchange: exchangeName, type: exchangeType);
-            connectionFactory.RequestedConnectionTimeout = 60000;
+            channel.ExchangeDeclare(exchange: exchangeName, type: exchangeType, durable: true);
+            
             Dictionary<string, object> args = null;
             if (createDeadLetterQueue)
                 args = channel.CreateDeadLetterQueue($"{exchangeName}-dead", $"{routingKey}-dead", $"{queueName}-dead");

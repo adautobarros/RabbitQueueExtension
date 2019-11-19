@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace RabbitQueueExtensions
 {
-    public static class RabbitQueueAssyncExtensions
+    public static class RabbitQueueAsyncExtensions
     {
-        public static void AddSubscribeAssyncQueue<T>(
+        public static void AddSubscribeAsyncQueue<T>(
             this IServiceCollection services,
             IConfiguration configuration,
             string configSectionRabbitMQ,
@@ -18,7 +18,7 @@ namespace RabbitQueueExtensions
         {
             var rabbitMQConfiguration = configuration.GetSection(configSectionRabbitMQ).Get<RabbitConfiguration>();
 
-            AddSubscribeAssyncQueue(handler,
+            AddSubscribeAsyncQueue(handler,
                 rabbitMQConfiguration.HostName,
                 rabbitMQConfiguration.Port,
                 rabbitMQConfiguration.UserName,
@@ -31,12 +31,12 @@ namespace RabbitQueueExtensions
                 rabbitMQConfiguration.CreateDeadLetterQueue);
         }
 
-        public static void AddSubscribeAssyncQueue<T>(
+        public static void AddSubscribeAsyncQueue<T>(
             this IServiceCollection services,
             RabbitConfiguration rabbitMQConfiguration,
             ICommandHandler<T> handler)
         {
-            AddSubscribeAssyncQueue(handler,
+            AddSubscribeAsyncQueue(handler,
                 rabbitMQConfiguration.HostName,
                 rabbitMQConfiguration.Port,
                 rabbitMQConfiguration.UserName,
@@ -49,7 +49,7 @@ namespace RabbitQueueExtensions
                 rabbitMQConfiguration.CreateDeadLetterQueue);
         }
 
-        public static void AddSubscribeAssyncQueue<T>(
+        public static void AddSubscribeAsyncQueue<T>(
             this IServiceCollection services,
             IConfiguration configuration,
             string configSectionRabbitMQHostConfiguration,
@@ -60,7 +60,7 @@ namespace RabbitQueueExtensions
 
             var rabbitMQInfoQueueConfiguration = configuration.GetSection(configSectionRabbitMQInfoQueueConfiguration).Get<RabbitInfoQueueConfiguration>();
 
-            AddSubscribeAssyncQueue(handler,
+            AddSubscribeAsyncQueue(handler,
                 rabbitMQHostConfiguration.HostName,
                 rabbitMQHostConfiguration.Port,
                 rabbitMQHostConfiguration.UserName,
@@ -73,13 +73,13 @@ namespace RabbitQueueExtensions
                 rabbitMQInfoQueueConfiguration.CreateDeadLetterQueue);
         }
 
-        public static void AddSubscribeAssyncQueue<T>(
+        public static void AddSubscribeAsyncQueue<T>(
             this IServiceCollection services,
             RabbitHostConfiguration rabbitMQHostConfiguration,
             RabbitInfoQueueConfiguration rabbitMQInfoQueueConfiguration,
             ICommandHandler<T> handler)
         {
-            AddSubscribeAssyncQueue(handler,
+            AddSubscribeAsyncQueue(handler,
                 rabbitMQHostConfiguration.HostName,
                 rabbitMQHostConfiguration.Port,
                 rabbitMQHostConfiguration.UserName,
@@ -92,7 +92,7 @@ namespace RabbitQueueExtensions
                 rabbitMQInfoQueueConfiguration.CreateDeadLetterQueue);
         }
 
-        private static void AddSubscribeAssyncQueue<T>(
+        private static void AddSubscribeAsyncQueue<T>(
             ICommandHandler<T> handler,
             string hostName,
             int port,

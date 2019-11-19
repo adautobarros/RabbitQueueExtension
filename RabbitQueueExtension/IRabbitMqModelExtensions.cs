@@ -7,7 +7,7 @@ namespace RabbitQueueExtensions
     {
         public static Dictionary<string, object> CreateDeadLetterQueue(this IModel channel, string deadLetterExchange, string deadLetterRoutingKey, string deadLetterQueue)
         {
-            channel.ExchangeDeclare(deadLetterExchange, "direct");
+            channel.ExchangeDeclare(deadLetterExchange, "direct", true);
             channel.QueueDeclare(deadLetterQueue, true, false);
             channel.QueueBind(queue: deadLetterQueue,
                             exchange: deadLetterExchange,
